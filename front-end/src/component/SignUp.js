@@ -1,7 +1,16 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 
 function SignUp() {
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    let is_login = localStorage.getItem('token');
+    if(is_login){
+      navigate('/');
+    }
+  });
+
   const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
   const [email, setEmail] = useState('');
@@ -11,8 +20,7 @@ function SignUp() {
   const [password_not_match, setPassword_Not_Match] = useState(false);
   const [subject, setSubject] = useState('');
   const [error, setError] = useState(false);
-  const [success_msg,setSuccessMsg] = useState(false);
-  const [not_success_msg,setNotSuccessMsg] = useState(false);
+  const [message,setMessage] = useState('');
 
   const onRegisterSubmit = async () =>{
 
@@ -32,10 +40,11 @@ function SignUp() {
         }
       });
       result = await result.json();
+      console.log(result);
       if(result.status === 200){
-        setSuccessMsg(true);
+        setMessage('Register Successfully');
       }else{
-        setNotSuccessMsg(true);
+        setMessage('Already Exist This Email...');
       }
     }
 
@@ -47,7 +56,7 @@ function SignUp() {
         <h3>Sign Up</h3>
 
         <div>
-          <div> { success_msg && `Register Successfully` } { not_success_msg && `Somting went wrong` } </div>
+          <div> { message } </div>
         </div>
 
         <div className="container">

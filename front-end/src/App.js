@@ -3,7 +3,10 @@ import './App.css';
 import Login from './component/Login';
 import NavBar from './component/NavBar';
 import SignUp from './component/SignUp';
+import Profile from './component/Profile';
+import Home from './component/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddProduct from './component/AddProduct';
 
 function App() {
   return (
@@ -13,9 +16,9 @@ function App() {
         <Routes>
           <Route path='/sign-up' element={<SignUp/>} />
           <Route path='/login' element={<Login/>} />
-          <Route path='/add-product' element={<h1>Add Product Page</h1>} />
-          <Route path='/profile' element={<h1>Profile Page</h1>} />
-          <Route path='/' element={<h1>Home Page</h1>} />
+          <Route path='/add-product' element={<AddProduct/>} />
+          <Route path='/profile' element={<Profile/>} />
+          <Route path='/' element={<Home/>} />
         </Routes>
       </BrowserRouter>
     </div>

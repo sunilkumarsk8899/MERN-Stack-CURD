@@ -13,6 +13,7 @@ const secretKey = 'mern-curd-db';
  * model
  */
 const User = require('./db/User');
+const Product = require('./db/Product');
 
 
 app.get('',(req,resp)=>{
@@ -83,6 +84,23 @@ app.put('/profile-update/:id', verifyToken, async (req,resp)=>{
     }
 });
 
+/**
+ * add product
+ */
+app.post('/add-product', verifyToken, async (req,resp)=>{
+    const check = await Product.findOne({ title : req.body.title });
+    if(check){
+        resp.send({status:400,'result':'Already this product exist'});
+    }else{
+        const product = await new Product(req.body);
+        let result = await product.save();
+        if(result){
+            resp.send({ 'data' : result, 'status' : 200,'result':'Add Product Successfully' });
+        }else{
+            resp.send('somthing went wrong');
+        }
+    }
+});
 
 
 
@@ -97,7 +115,7 @@ function verifyToken(req,resp,next){
         token = token.split(" ")[1];
         jwtToken.verify(token,secretKey,(err,valid)=>{
             if(err){
-                resp.status(401).send({result : 'Invalid Token'});
+                resp.send({result : 'Invalid Token'});
             }else{
                 next();
             }

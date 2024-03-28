@@ -102,6 +102,14 @@ app.post('/add-product', verifyToken, async (req,resp)=>{
     }
 });
 
+/**
+ * get product
+ */
+app.get('/get-product', verifyToken, async (req,resp)=>{
+    let result = await Product.find();
+    resp.send({ 'data' : result, 'status' : 200 });
+});
+
 
 
 

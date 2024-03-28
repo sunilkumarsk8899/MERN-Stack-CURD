@@ -14,15 +14,17 @@ function AddProduct() {
     const [subheading, setSubheading] = useState('');
     const [description, setDesc] = useState('');
     const [status, setStatus] = useState('');
+    const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')));
+    const [user_id, setUserID] = useState(userData._id);
     const [msg, setMsg] = useState('');
 
     const addProductHandle = async () =>{
       console.log('add product working');
-      console.log(title,subheading,description,status);
+      console.log(title,subheading,description,status,user_id);
       if(title !== '' && subheading !== '' && description !== ''){
         let result = await fetch('http://localhost:7000/add-product',{
           method : 'POST',
-          body   : JSON.stringify({ title,subheading,description,status }),
+          body   : JSON.stringify({ title,subheading,description,status,user_id }),
           headers : {
             "Content-Type" : "application/json",
             authorization : JSON.parse(localStorage.getItem('token'))

@@ -143,3 +143,69 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.btn-btn-danger{
+  background: red;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-btn-primary{
+  background: blue;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+
+.btn-btn-success{
+  background: green;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button.btn-btn-primary:hover {
+  scale: 1.2;
+  background: #6767ec;
+  transform: rotate3d(1, 1, 1, 16deg);
+}
+button.btn-btn-danger:hover {
+  scale: 1.2;
+  background: #df5e5e;
+  transform: rotate3d(1, 1, 1, 16deg);
+}
+button.btn-btn-success:hover {
+  scale: 1.2;
+  background: #38ad38;
+  transform: rotate3d(1, 1, 1, 16deg);
+}
+
+.hide-input{
+  display: none;
+}
+
+.published_tag{
+  background-color: blue;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.draft_tag{
+  background-color: gray;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
